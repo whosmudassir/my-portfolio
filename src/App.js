@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { NativeBaseProvider, Box } from "native-base";
+import Nav from "./components/Nav/index";
+import Home from "./components/Home/index";
+import Blogs from "./components/Blogs";
+import Projects from "./components/Projects/index";
+import Footer from "./components/Footer/index";
 
-function App() {
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NativeBaseProvider>
+      <Box px="25%">
+        <Router>
+          <Nav />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/projects">
+              <Projects />
+            </Route>
+            <Route path="/blog">
+              <Blogs />
+            </Route>
+          </Switch>
+          <Footer />
+        </Router>
+      </Box>
+    </NativeBaseProvider>
   );
 }
-
-export default App;
