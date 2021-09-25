@@ -1,54 +1,39 @@
 import React from "react";
-import {
-  VStack,
-  HStack,
-  Button,
-  IconButton,
-  Icon,
-  Text,
-  NativeBaseProvider,
-  Center,
-  Box,
-  StatusBar,
-} from "native-base";
+
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { Container, Nav } from "react-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
 
-function Nav() {
+function NavBar() {
   return (
+    // <Navbar bg="light" expand="lg">
+    //   <p style={{ color: "black", fontSize: "20px" }}>Home</p>
+    //   <Link to="/projects">
+    //     <p style={{ color: "black" }}>projects </p>
+    //   </Link>
+    //   <Link to="/blog">
+    //     <p style={{ color: "black" }}>blogs </p>
+    //   </Link>
+    //   <FontAwesomeIcon icon={faGithub} />
+    // </Navbar>
     <>
-      <StatusBar backgroundColor="red" barStyle="light-content" />
-
-      <Box safeAreaTop backgroundColor="red" />
-
-      <HStack
-        bg="white"
-        px="1"
-        py="3"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <HStack space="4" alignItems="center">
-          <Text color="black" fontSize="20">
-            Home
-          </Text>
-        </HStack>
-        <HStack space="5" alignItems="center">
-          <Link to="/projects">
-            <Text color="black">projects </Text>
-          </Link>
-
-          <Link to="/blog">
-            {" "}
-            <Text color="black">blogs </Text>
-          </Link>
-          <FontAwesomeIcon icon={faGithub} />
-        </HStack>
-      </HStack>
+      <Navbar bg="light" expand="lg">
+        <Container>
+          <Navbar.Brand href="#home">Mudassir</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Link to="/projects">projects</Link>
+              <Link to="/blog">blog</Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   );
 }
 
-export default Nav;
+export default NavBar;
